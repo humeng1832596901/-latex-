@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{assignment}[2020/02/26 Assignment Package]
+
+\RequirePackage{graphicx}
+
+\newcommand{\studentIds}[2]{
+    \renewcommand{\@studentOneId}{#1}
+    \renewcommand{\@studentTwoId}{#2}
+}
+\newcommand{\@studentOneId}{\@latex@error{No \noexpand\studentIds given}\@ehc}
+\newcommand{\@studentTwoId}{\@latex@error{No \noexpand\studentIds given}\@ehc}
+
+\newcommand{\studentNames}[2]{
+    \renewcommand{\@studentOneName}{#1}
+    \renewcommand{\@studentTwoName}{#2}
+}
+\newcommand{\@studentOneName}{\@latex@error{No \noexpand\studentNames given}\@ehc}
+\newcommand{\@studentTwoName}{\@latex@error{No \noexpand\studentNames given}\@ehc}
+
+\newcommand{\assignmentNumber}[1]{\renewcommand{\@assignmentNumber}{#1}}
+\newcommand{\@assignmentNumber}{\@latex@error{No \noexpand\assignmentNumber given}\@ehc}
+
+\newcommand{\makecover}{
+	\begin{center}
+		\includegraphics[width=250pt]{LAU_School_of_Arts_and_Sciences.png}
+	\end{center}
+    
+    \title{数据结构作业 \#\@assignmentNumber}
+    %\title{数据结构作业第 \#\@assignmentNumber 章}
+    %\author{\@studentOneName\hspace{1pt} : \@studentOneId \\ \@studentTwoName\hspace{1pt} : \@studentTwoId}
+    \author{\@studentOneName\hspace{1pt} : \@studentOneId \\ \@studentTwoName\hspace{1pt} : \@studentTwoId}
+    
+    \vspace{\fill}
+    {\let\newpage\relax\maketitle}
+    \vspace{\fill}
+    
+    \newpage
+}
